@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/22 12:31:41 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:08:09 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 		arg = ft_split(av[1], ' ');
 	else
 		arg = av + 1;
-	error_syntax(arg);
-	init_stack_a(&a, arg);
+	if (error_syntax(arg) == 1)
+		init_stack_a(&a, arg);
 	print_stack(a);
 }

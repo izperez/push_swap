@@ -6,13 +6,13 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:19:15 by izperez           #+#    #+#             */
-/*   Updated: 2023/12/11 14:20:39 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/22 13:00:25 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	issufix(char *str, char *suff)
+int	ft_issufix(char *str, char *suff)
 {
 	size_t	i;
 	size_t	str_len;

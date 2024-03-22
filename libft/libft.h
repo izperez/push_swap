@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 12:03:56 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/22 12:19:19 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:07:38 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # define DEC		"0123456789"
 # define HEX_MIN	"0123456789abcdef"
 # define HEX_MAY	"0123456789ABCDEF"
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+# define LONG_MAX 9223372036854775807
+# define LONG_MIN -2147483647
 
 typedef struct s_list
 {
@@ -84,7 +89,7 @@ void	pf_isnegative(int i, char *base, int *bytes);
 void	pf_putchar(char c, int	*bytes);
 void	pf_putstr(char *str, int *bytes);
 
-int		issufix(char *str, char *suff);
+int		ft_issufix(char *str, char *suff);
 
 //push_swap
 long	ps_atol(const char *str);

@@ -13,7 +13,7 @@
 NAME = push_swap
 INCLUDE = push_swap.h
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
 RM = rm -f
 
 LIBFT_DIR = libft/
@@ -38,4 +38,4 @@ clean:
 fclean: clean
 		$(RM) $(NAME)
 
-re: fclean all
+re: fclean all $(LIBFT)

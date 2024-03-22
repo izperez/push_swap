@@ -6,11 +6,11 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:06:18 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/22 12:45:16 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/22 14:10:36 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 long	ps_atol(const char *str)
 {
