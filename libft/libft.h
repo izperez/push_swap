@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 12:03:56 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/25 10:31:49 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/25 11:52:08 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void	pf_putstr(char *str, int *bytes);
 int		ft_issufix(char *str, char *suff);
 
 //push_swap
-long	ps_atol(const char *str);
+long			ps_atol(const char *str);
 
 #endif
