@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:09 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/25 12:08:38 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/25 12:35:01 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ int	error_syntax(char **av)
 		j = 0;
 		while (av[i][j] == ' ')
 			j++;
-		if (av[i][j] == '\0')
+		if (av[i][j] == '\0' || av[i][j] == '+')
+		{
 			i++;
+			continue;
+		}
 		if (av[i][0] == '\0' || (av[i][0] == '-' && av[i][j] != ' ' && av[i][1] == '\0') || av[i][0] == '+')
 		{
 			ft_printf("Error, Invalid number\n");
