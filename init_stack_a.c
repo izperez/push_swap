@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:01:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/22 13:12:00 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/25 10:19:03 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_stk	*append_node(t_stk	*top_node, int i)
 	new_node->prev = last_node;
 	//devuelve el nuevo nodo
 	return (new_node);
+	free (new_node);
 }
 
 /* Function that initializes the stack */
