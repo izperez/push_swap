@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 09:44:30 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 09:59:59 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,14 @@ typedef struct s_stack
 	struct s_stack	*target;
 }				t_stk;
 
+//push_swap.c
+void	print_stack(t_stk *stack);
 
 //init_stack_a.c
 void	init_stack_a(t_stk **a, char **av);
+
+//init_stack_b.c
+void	init_stack_b(t_stk **a, t_stk **b);
 
 //errors.c
 int		error_syntax(char **av);

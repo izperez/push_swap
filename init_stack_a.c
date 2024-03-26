@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:01:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/25 11:22:41 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 10:12:24 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ t_stk	*append_node(t_stk	*top_node, int i)
 /* Function that initializes the stack */
 void	init_stack_a(t_stk **a, char **av)
 {
-	int	i;
-	int	n;
-	t_stk	*start = NULL;
+	int		i;
+	int		n;
+	t_stk	*start;
 
 	i = 0;
+	start = NULL;
 	while (av[i] != NULL)
 	{
 		n = ps_atol(av[i]);
@@ -57,4 +58,6 @@ void	init_stack_a(t_stk **a, char **av)
 		i++;
 	}
 	*a = start;
+	// printf("******* Stack A *******\n");
+	// print_stack(*a);
 }
