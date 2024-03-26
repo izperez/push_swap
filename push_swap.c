@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/25 09:57:42 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 09:53:09 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,9 @@ int	main(int ac, char **av)
 		arg = av + 1;
 	if (error_syntax(arg) == 1)
 		init_stack_a(&a, arg);
+	pb(&a, &b);
+	ft_printf("Este es el b: ");
+	print_stack(b);
+	ft_printf("Este es el a: ");
 	print_stack(a);
 }

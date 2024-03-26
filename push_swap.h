@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/22 12:24:44 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 09:44:30 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ void	init_stack_a(t_stk **a, char **av);
 
 //errors.c
 int		error_syntax(char **av);
+
+//commands
+void	pa(t_stk **a, t_stk **b);
+void	pb(t_stk **a, t_stk **b);
 
 #endif
