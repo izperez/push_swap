@@ -19,8 +19,7 @@ RM = rm -f
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
-SRC = push_swap.c errors.c init_stack_a.c commands/*.c init_stack_b.c
-
+SRC = push_swap.c errors.c init_stack_a.c init_stack_b.c commands/push.c commands/swap.c
 .SILENT:
 all: $(NAME)
 

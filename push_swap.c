@@ -6,29 +6,35 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 10:12:18 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:16:02 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stk *stack)
+void	print_stack(t_psl *list)
 {
-	t_stk	*current;
+	t_stack	*current;
 
-	current = stack;
-	while (current != NULL)
+	current = list->first;
+	if (list == NULL)
+		return ;
+	else
 	{
 		ft_printf("%d\n", current->n);
 		current = current->next;
 	}
-	ft_printf("\n");
+	while (list->first != current)
+	{
+		ft_printf("%d\n", current->n);
+		current = current->next;
+	}
 }
 
 int	main(int ac, char **av)
 {
-	t_stk	*a;
-	t_stk	*b;
+	t_psl	*a;
+	t_psl	*b;
 	char	**arg;
 
 	a = NULL;
@@ -40,10 +46,10 @@ int	main(int ac, char **av)
 	else
 		arg = av + 1;
 	if (error_syntax(arg) == 1)
-		init_stack_a(&a, arg);
-	init_stack_b(&a, &b);
+		a = init_stack_a(a, arg);
+	b = init_stack_b(a);
 	printf("******* Stack A *******\n");
 	print_stack(a);
 	printf("******* Stack B *******\n");
 	print_stack(b);
-}
+} 

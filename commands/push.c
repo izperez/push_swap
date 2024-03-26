@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:42:55 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 10:46:13 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 13:25:55 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,49 @@
 /* push a: Takes the first element from the stack_b
 adds at the top of the stack_a
 If the stack is empty does nothing */
-void	pa(t_stk **a, t_stk **b)
+void	pa(t_psl *a, t_psl *b)
 {
-	t_stk	*temp;
+	t_stack	*temp;
 
-	if (*b == NULL)
+	if (b == NULL || b->first == NULL)
 		return ;
-	temp = *b;
-	*b = (*b)->next;
-	if (*b != NULL)
-		(*b)->prev = NULL;
-	temp->next = *a;
-	if (*a != NULL)
-		(*a)->prev = temp;
-	*a = temp;
+	temp = b->first;
+	b->first = b->first->next;
+	if (temp->prev != NULL)
+		temp->prev->next = b->first;
+	if (b->first != NULL)
+		b->first->prev = temp->prev;
+	temp->next = a->first;
+	if (a->first != NULL)
+		a->first->prev = temp;
+	a->first = temp;
+	if (a->last != NULL)
+		a->last->next = temp;
+	else
+		a->last = temp;
 }
 
 /* push b: Takes the first element from the stack_a
 adds at the top of the stack_b
 If the stack is empty does nothing */
-void	pb(t_stk **a, t_stk **b)
+void	pb(t_psl *a, t_psl *b)
 {
-	t_stk	*temp;
+	t_stack	*temp;
 
-	if (*a == NULL)
+	if (a == NULL || a->first == NULL)
 		return ;
-	temp = *a;
-	*a = (*a)->next;
-	if (*a != NULL)
-		(*a)->prev = NULL;
-	temp->next = *b;
-	if (*b != NULL)
-		(*b)->prev = temp;
-	*b = temp;
+	temp = a->first;
+	a->first = a->first->next;
+	if (temp->prev != NULL)
+		temp->prev->next = a->first;
+	if (a->first != NULL)
+		a->first->prev = temp->prev;
+	temp->next = b->first;
+	if (b->first != NULL)
+		b->first->prev = temp;
+	b->first = temp;
+	if (b->last != NULL)
+		b->last->next = temp;
+	else
+		b->last = temp;
 }

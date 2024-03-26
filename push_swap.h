@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 11:12:01 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:16:20 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@
 # define RRB "\033[35mrrb\033[0m\n"
 # define RRR "\033[35mrrr\033[0m\n"
 
-/* typedef struct s_list
+typedef struct s_psl
 {
-	int			*firs;
-	int			*last;
-	int			*next;
-	int			*prev;
-}				t_list; */
+	struct s_stack			*first;
+	struct s_stack			*last;
+}				t_psl;
 
 typedef struct s_stack
 {
@@ -54,25 +52,25 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	struct s_stack	*target;
-}				t_stk;
+}				t_stack;
 
 //push_swap.c
-void	print_stack(t_stk *stack);
+void	print_stack(t_psl *list);
 
 //init_stack_a.c
-void	init_stack_a(t_stk **a, char **av);
+t_psl	*init_stack_a(t_psl *a, char **av);
 
 //init_stack_b.c
-void	init_stack_b(t_stk **a, t_stk **b);
+t_psl	*init_stack_b(t_psl *a);
 
 //errors.c
 int		error_syntax(char **av);
 
 //commands
-void	pa(t_stk **a, t_stk **b);
-void	pb(t_stk **a, t_stk **b);
-void	sa(t_stk **a);
-void	sb(t_stk **b);
-void	ss(t_stk **a, t_stk **b);
+void	pa(t_psl *a, t_psl *b);
+void	pb(t_psl *a, t_psl *b);
+void	sa(t_psl *a);
+void	sb(t_psl *b);
+void	ss(t_psl *a, t_psl *b);
 
 #endif

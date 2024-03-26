@@ -6,56 +6,57 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:01:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 10:50:10 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 12:51:41 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Function wich appends all nodes required */
-t_stk	*append_node(t_stk	*top_node, int i)
+t_psl	*append_node(t_psl *list, int i)
 {
-	t_stk	*new_node;
-	t_stk	*last_node;
+	t_stack	*new_node;
 
-	new_node = malloc(sizeof(t_stk));
+	new_node = malloc(sizeof(t_stack));
 	if (new_node == NULL)
-		return (0);
+		return (NULL);
 	new_node->n = 0;
 	new_node->i = i;
 	new_node->above_median = 0;
 	new_node->cheapest = 0;
 	new_node->next = NULL;
-	new_node->prev = NULL;
+	new_node->prev = list->last;
 	new_node->target = NULL;
-	if (top_node == NULL)
-		return (new_node);
-	last_node = top_node;
-	while (last_node->next != NULL)
-		last_node = last_node->next;
-	last_node->next = new_node;
-	new_node->prev = last_node;
-	return (new_node);
-	free (new_node);
+	if (list->first == NULL)
+		list->first = new_node;
+	else
+		list->last->next = new_node;
+	list->last = new_node;
+	list->first->prev = list->last;
+	list->last->next = list->first;
+	return (list);
 }
 
 /* Function that initializes the stack */
-void	init_stack_a(t_stk **a, char **av)
+t_psl	*init_stack_a(t_psl *list, char **av)
 {
 	int		i;
 	int		n;
-	t_stk	*start;
 
 	i = 0;
-	start = NULL;
+	list = malloc(sizeof(t_psl));
+	if (list == NULL)
+		return (NULL);
+	list->first = NULL;
+	list->last = NULL;
 	while (av[i] != NULL)
 	{
 		n = ps_atol(av[i]);
-		*a = append_node(*a, i);
-		if (start == NULL)
-			start = *a;
-		(*a)->n = n;
+		list = append_node(list, i);
+		if (list == NULL)
+			return (NULL);
+		list->last->n = n;
 		i++;
 	}
-	*a = start;
+	return (list);
 }
