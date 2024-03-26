@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 10:45:07 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 11:12:01 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@
 # define RRB "\033[35mrrb\033[0m\n"
 # define RRR "\033[35mrrr\033[0m\n"
 
-typedef struct s_list
+/* typedef struct s_list
 {
 	int			*firs;
 	int			*last;
 	int			*next;
 	int			*prev;
-}				t_list;
+}				t_list; */
 
 typedef struct s_stack
 {
@@ -71,7 +71,8 @@ int		error_syntax(char **av);
 //commands
 void	pa(t_stk **a, t_stk **b);
 void	pb(t_stk **a, t_stk **b);
-void	sa(t_stk **a, t_stk **b);
-void	sb(t_stk **a, t_stk **b);
+void	sa(t_stk **a);
+void	sb(t_stk **b);
+void	ss(t_stk **a, t_stk **b);
 
 #endif
