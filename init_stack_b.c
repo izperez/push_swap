@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 09:55:39 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 10:12:28 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/26 10:50:13 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,4 @@ void	init_stack_b(t_stk **a, t_stk **b)
 		pb(a, b);
 		pb(a, b);
 	}
-	// printf("******* Stack B *******\n");
-	// print_stack(*b);
 }
