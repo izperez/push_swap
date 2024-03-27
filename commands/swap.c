@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 10:29:17 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 15:14:58 by izperez          ###   ########.fr       */
+/*   Updated: 2024/03/27 10:43:09 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	sa(t_psl *a)
 {
 	int	num;
 
+	num = 0;
 	if (a->first != NULL && a->first->next != NULL)
 	{
 		num = a->first->n;
@@ -28,29 +29,11 @@ void	sa(t_psl *a)
 
 //swap b: Swap the first two elements from the stack_b.
 //Does nothing if there is <= 1 element.
-/* void	sb(t_psl *b)
-{
-	t_stack	*temp;
-
-	if (b->first != NULL && b->first->next != NULL)
-	{
-		temp = b->first;
-		b->first = b->first->next;
-		temp->next = b->first->next;
-		temp->prev = b->first;
-		b->first->next = temp;
-		temp->next->prev = temp;
-		b->first->prev = b->last;
-		b->last->next = b->first;
-		if (b->last == temp)
-			b->last = b->last->next;
-	}
-} */
-
 void	sb(t_psl *b)
 {
 	int num;
 
+	num = 0;
 	if (b->first != NULL && b->first->next != NULL)
 	{
 		num = b->first->n;
