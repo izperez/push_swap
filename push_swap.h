@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/27 13:36:13 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/02 12:41:35 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ typedef struct s_stack
 	struct s_stack	*target;
 }				t_stack;
 
+//push_swap.c
+int		stack_len(t_psl *stack);
+
 //init_stack_a.c
 t_psl	*init_stack_a(t_psl *a, char **av);
 
@@ -78,5 +81,7 @@ void	rrr(t_psl *a, t_psl *b);
 
 //algorithims
 void	sorting_three(t_psl *a);
+t_stack	*min_num(t_psl *list, int deli);
+t_stack	*max_num(t_psl *list, int deli);
 
 #endif
