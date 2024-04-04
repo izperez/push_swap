@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/02 12:20:06 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/04 13:20:43 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	stack_len(t_psl *stack)
 	return (i);
 }
 
-static void	print_stack(t_psl *list)
+void	print_stack(t_psl *list)
 {
 	t_stack	*current;
 
@@ -37,7 +37,12 @@ static void	print_stack(t_psl *list)
 	while (current != NULL)
 	{
 		ft_printf("%d\n", current->n);
-		//ft_printf("prev: %d\nnext:%d\n", current->prev->n, current->next->n);
+		ft_printf("index de: %d es: %i\n", current->n, current->i);
+		ft_printf("price de: %d es: %i\n", current->n, current->price);
+		ft_printf("cheapest es: %i\n", current->cheapest);
+		if (current->target)
+			ft_printf("target de: %d es: %i\n", current->n, current->target->n);
+		ft_printf("\n\n");
 		if (current->next == list->first)	
 			break ;
 		current = current->next;
@@ -48,7 +53,6 @@ int	main(int ac, char **av)
 {
 	t_psl	*a;
 	t_psl	*b;
-	t_stack *current;
 
 	char	**arg;
 
@@ -65,19 +69,9 @@ int	main(int ac, char **av)
 	b = init_stack_b(a);
 	if (stack_len(a) == 3)
 		sorting_three(a);
-
-	current = a->first;
-	
-	while(1)
-	{
-		printf("target de a %i, es %i\n", current->n, max_num(b, current->n)->n);
-		current = current->next;
-		if (current == a->first)
-			break ;
-		
-	}
+	push_from_a(a, b);
 	printf("******* Stack A *******\n");
 	print_stack(a);
 	printf("******* Stack B *******\n");
 	print_stack(b);
-} 
+}

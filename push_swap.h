@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/02 12:41:35 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/04 12:31:10 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_stack
 
 //push_swap.c
 int		stack_len(t_psl *stack);
+void	print_stack(t_psl *list);
 
 //init_stack_a.c
 t_psl	*init_stack_a(t_psl *a, char **av);
@@ -84,4 +85,10 @@ void	sorting_three(t_psl *a);
 t_stack	*min_num(t_psl *list, int deli);
 t_stack	*max_num(t_psl *list, int deli);
 
+//move_stack_a.c
+void	stack_a(t_psl *a, t_psl *b);
+void	set_index(t_psl *list);
+
+//move_stack_a_aux.c
+void	push_from_a(t_psl *a, t_psl *b);
 #endif
