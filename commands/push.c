@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:42:55 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/27 12:11:31 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/05 12:49:09 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	pa(t_psl *a, t_psl *b)
 		a->last->next = temp;
 		a->first = temp;
 	}
+	ft_printf("PA\n");
 }
 
 /* push b: Takes the first element from the stack_a
@@ -70,4 +71,5 @@ void	pb(t_psl *a, t_psl *b)
 		b->last->next = temp;
 		b->first = temp;
 	}
+	ft_printf("PB\n");
 }
