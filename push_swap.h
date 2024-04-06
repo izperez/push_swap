@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/04 12:31:10 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/06 12:44:38 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_psl
 {
 	struct s_stack			*first;
 	struct s_stack			*last;
+	int						size;
 }				t_psl;
 
 typedef struct s_stack
@@ -58,11 +59,9 @@ typedef struct s_stack
 int		stack_len(t_psl *stack);
 void	print_stack(t_psl *list);
 
-//init_stack_a.c
+//init_stack.c
 t_psl	*init_stack_a(t_psl *a, char **av);
-
-//init_stack_b.c
-t_psl	*init_stack_b(t_psl *a);
+t_psl	*init_stack_b(void);
 
 //errors.c
 int		error_syntax(char **av);
@@ -80,15 +79,23 @@ void	rra(t_psl *a);
 void	rrb(t_psl *b);
 void	rrr(t_psl *a, t_psl *b);
 
-//algorithims
+//shorting_three.c
 void	sorting_three(t_psl *a);
 t_stack	*min_num(t_psl *list, int deli);
 t_stack	*max_num(t_psl *list, int deli);
 
-//move_stack_a.c
+//move_stack.c
+t_stack	*get_cheapest(t_psl *list);
 void	stack_a(t_psl *a, t_psl *b);
-void	set_index(t_psl *list);
+void	sorting_all(t_psl *a, t_psl *b);
 
-//move_stack_a_aux.c
-void	push_from_a(t_psl *a, t_psl *b);
+//move_stack_aux.c
+void	move_one_top(t_psl *a, t_psl *b);
+
+//set_stack_a.c
+void	set_index(t_psl *list);
+void	set_target_a(t_psl *a, t_psl *b);
+void	set_price(t_psl *a, t_psl *b);
+void	set_cheapest(t_psl *list);
+
 #endif

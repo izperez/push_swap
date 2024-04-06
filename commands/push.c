@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:42:55 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/05 12:49:09 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/06 12:33:33 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	pa(t_psl *a, t_psl *b)
 
 	if (b == NULL || b->first == NULL)
 		return ;
+	if (b->size == 0)
+	{
+		b->first = NULL;
+		b->last = NULL;
+		free(b);
+		b = NULL;
+		return ;
+	}
 	temp = b->first;
 	b->first = b->first->next;
 	b->first->prev = b->last;
@@ -31,6 +39,8 @@ void	pa(t_psl *a, t_psl *b)
 		b->last = temp;
 		temp->next = temp;
 		temp->prev = temp;
+		a->size++;
+		b->size--;
 	}
 	else
 	{
@@ -39,6 +49,8 @@ void	pa(t_psl *a, t_psl *b)
 		a->first->prev = temp;
 		a->last->next = temp;
 		a->first = temp;
+		a->size++;
+		b->size--;
 	}
 	ft_printf("PA\n");
 }
@@ -62,6 +74,8 @@ void	pb(t_psl *a, t_psl *b)
 		b->last = temp;
 		temp->next = temp;
 		temp->prev = temp;
+		a->size--;
+		b->size++;
 	}
 	else
 	{
@@ -70,6 +84,8 @@ void	pb(t_psl *a, t_psl *b)
 		b->first->prev = temp;
 		b->last->next = temp;
 		b->first = temp;
+		a->size--;
+		b->size++;
 	}
 	ft_printf("PB\n");
 }
