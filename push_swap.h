@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/06 12:44:38 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:29:24 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	print_stack(t_psl *list);
 //init_stack.c
 t_psl	*init_stack_a(t_psl *a, char **av);
 t_psl	*init_stack_b(void);
+void	stack_a(t_psl *a, t_psl *b);
+void	stack_b(t_psl *a, t_psl *b);
 
 //errors.c
 int		error_syntax(char **av);
@@ -86,13 +88,15 @@ t_stack	*max_num(t_psl *list, int deli);
 
 //move_stack.c
 t_stack	*get_cheapest(t_psl *list);
-void	stack_a(t_psl *a, t_psl *b);
+void	set_target_b(t_psl *a, t_psl *b);
+
 void	sorting_all(t_psl *a, t_psl *b);
 
 //move_stack_aux.c
-void	move_one_top(t_psl *a, t_psl *b);
+void	move_one_top_a(t_psl *a, t_psl *b);
+void	move_one_top_b(t_psl *b, t_psl *a);
 
-//set_stack_a.c
+//set_stack.c
 void	set_index(t_psl *list);
 void	set_target_a(t_psl *a, t_psl *b);
 void	set_price(t_psl *a, t_psl *b);

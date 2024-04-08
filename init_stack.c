@@ -6,11 +6,32 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:01:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/06 12:42:17 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:04:58 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* Main funtion: Prepares required values to push form b to a */
+void	stack_b(t_psl *a, t_psl *b)
+{
+	set_index(a);
+	if (b)
+	{
+		set_index(b);
+		set_target_b(a, b);
+	}
+}
+
+/* Main funtion: Prepares required values to push the cheapest node to b */
+void	stack_a(t_psl *a, t_psl *b)
+{
+	set_index(a);
+	set_index(b);
+	set_target_a(a, b);
+	set_price(a, b);
+	set_cheapest(a);
+}
 
 /* Function that initializes the stack */
 t_psl	*init_stack_b(void)

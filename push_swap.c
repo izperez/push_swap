@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/06 12:42:58 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 13:12:38 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,13 @@ void	print_stack(t_psl *list)
 	current = list->first;
 	while (current != NULL)
 	{
-		// ft_printf("dir value: %p\n", current);
-		// ft_printf("next dir value: %p\n", current->next);
-		// ft_printf("prev dir value: %p\n", current->prev);
 		ft_printf("%d\n", current->n);
-		// ft_printf("index: %d\n", current->i);
-		// ft_printf("price: %i\n", current->price);
-		// ft_printf("cheapest: %i\n", current->cheapest);
-		// if (current->target)
-		// 	ft_printf("target: %i\n", current->target->n);
-		// ft_printf("\n\n");
+		ft_printf("index: %d\n", current->i);
+		ft_printf("price: %i\n", current->price);
+		ft_printf("cheapest: %i\n", current->cheapest);
+		if (current->target)
+			ft_printf("target: %i\n", current->target->n);
+		ft_printf("\n\n");
 		if (current->next == list->first)
 			break ;
 		current = current->next;

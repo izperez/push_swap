@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_stack_a.c                                      :+:      :+:    :+:   */
+/*   set_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:08:10 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/05 13:12:56 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:52:21 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ void	set_cheapest(t_psl *list)
 	int		min;
 
 	min = INT_MAX;
-	current = (list)->first;
+	current = list->first;
 	while (1)
 	{
 		if (current->price < min)
 			current->cheapest = 1;
-		if (current == (list)->first)
+		if (current == list->first)
 			break ;
 	}
 }

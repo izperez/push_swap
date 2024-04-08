@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_stack_a.c                                     :+:      :+:    :+:   */
+/*   move_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 11:49:14 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/06 12:42:40 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 13:10:23 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+/* 
+void	all_sorted(t_psl *a)
+{
+	t_stack	*mini;
+
+	mini = min_num(a, INT_MAX);
+	a->first = mini;
+	a->first->prev = mini->prev;
+} */
 
 /* Returns the cheapest node */
 t_stack	*get_cheapest(t_psl *list)
@@ -29,16 +38,6 @@ t_stack	*get_cheapest(t_psl *list)
 	return (current);
 }
 
-/* Main funtion: Prepares required values to push the cheapest node to b */
-void	stack_a(t_psl *a, t_psl *b)
-{
-	set_index(a);
-	set_index(b);
-	set_target_a(a, b);
-	set_price(a, b);
-	set_cheapest(a);
-}
-
 void	set_target_b(t_psl *a, t_psl *b)
 {
 	t_stack	*current;
@@ -50,19 +49,6 @@ void	set_target_b(t_psl *a, t_psl *b)
 		current = current->next;
 		if (current == b->first)
 			break ;
-		if (current->target)
-			printf("target %i\n", current->target->n);
-	}
-}
-
-/* Main funtion: Prepares required values to push form b to a */
-void	stack_b(t_psl *a, t_psl *b)
-{
-	set_index(a);
-	if (b)
-	{
-		set_index(b);
-		set_target_b(a, b);
 	}
 }
 
@@ -70,7 +56,7 @@ void	stack_b(t_psl *a, t_psl *b)
 void	sorting_all(t_psl *a, t_psl *b)
 {
 	int	len;
-	int	i = 0;
+	t_stack	*cheap;
 
 	len = stack_len(a);
 	if (len >= 5)
@@ -81,21 +67,19 @@ void	sorting_all(t_psl *a, t_psl *b)
 	else if (len >= 4)
 		pb(a, b);
 	len = stack_len(a);
-	while (len > 3) //&& !//no esta ordenado)
+	while (len > 3)
 	{
 		stack_a(a, b);
-		move_one_top(a, b);
+		move_one_top_a(a, b);
 		len = stack_len(a);
 	}
 	sorting_three(a);
 	while (b->first)
 	{
 		stack_b(a, b);
-		pa(a, b);
-		printf("******* Stack A ******* %i\n", i);
-		print_stack(a);
-		printf("******* Stack B ******* %i\n", i);
-		print_stack(b);
-		i++;
+		move_one_top_b(b, a);
 	}
+	cheap = min_num(a, INT_MIN);
+	a->first = cheap;
+	a->first->prev = cheap->prev;
 }

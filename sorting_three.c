@@ -6,12 +6,13 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:09:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/06 11:22:31 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 11:02:08 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Finds the min_num in the stack */
 t_stack	*min_num(t_psl *list, int deli)
 {
 	int		min;
@@ -37,6 +38,7 @@ t_stack	*min_num(t_psl *list, int deli)
 	return (min_node);
 }
 
+/* Finds the max_num in the stack */
 t_stack	*max_num(t_psl *list, int deli)
 {
 	int		max;
@@ -62,6 +64,7 @@ t_stack	*max_num(t_psl *list, int deli)
 	return (max_node);
 }
 
+/* Function that sort the stack of 3 nums */
 void	sorting_three(t_psl *a)
 {
 	int	max;

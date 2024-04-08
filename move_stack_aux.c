@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_stack_a_aux.c                                 :+:      :+:    :+:   */
+/*   move_stack_aux.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 12:14:26 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/05 13:17:08 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 12:30:43 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	move_other(t_psl *list, t_stack *node, int mode)
 }
 
 /* Moves at least one node at the top of the stack */
-void	move_one_top(t_psl *a, t_psl *b)
+void	move_one_top_a(t_psl *a, t_psl *b)
 {
 	t_stack	*current;
 	t_stack	*cheapest;
@@ -81,4 +81,14 @@ void	move_one_top(t_psl *a, t_psl *b)
 	move_other(a, cheapest, 1);
 	move_other(b, cheapest->target, 2);
 	pb(a, b);
+}
+
+/* Moves at least one node at the top of the stack */
+void	move_one_top_b(t_psl *b, t_psl *a)
+{
+	t_stack	*current;
+
+	current = b->first;
+	move_other(a, current->target, 2);
+	pa(a, b);
 }

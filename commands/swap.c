@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 10:29:17 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/05 11:22:45 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/08 13:12:01 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	swap(t_psl *list)
 void	sa(t_psl *a)
 {
 	swap(a);
-	ft_printf("SA\n");
+	ft_printf(SA);
 }
 
 //swap b: Swap the first two elements from the stack_b.
@@ -38,12 +38,12 @@ void	sa(t_psl *a)
 void	sb(t_psl *b)
 {
 	swap(b);
-	ft_printf("SB\n");
+	ft_printf(SB);
 }
 //Does sa + sb at the same time
 void	ss(t_psl *a, t_psl *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("SS\n");
+	ft_printf(SS);
 }
