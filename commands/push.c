@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:42:55 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 11:58:23 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 12:08:14 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	pa(t_psl *a, t_psl *b)
 		b->last->next = b->first;
 	}
 	pa_aux(a, b, temp);
-	ft_printf(PA);
+	ft_printf("pa\n");
 }
 
 /* If the stack is empty or if there has sth */
@@ -102,5 +102,5 @@ void	pb(t_psl *a, t_psl *b)
 	a->first->prev = a->last;
 	a->last->next = a->first;
 	pb_aux(a, b, temp);
-	ft_printf(PB);
+	ft_printf("pb\n");
 }

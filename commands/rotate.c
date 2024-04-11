@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 12:13:25 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 13:11:46 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 12:08:49 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rotate(t_psl *list)
 void	ra(t_psl *a)
 {
 	rotate(a);
-	ft_printf(RA);
+	ft_printf("ra\n");
 }
 
 /* rotate b: Moves uppwards all the elements of stack_b one pos
@@ -31,7 +31,7 @@ void	ra(t_psl *a)
 void	rb(t_psl *b)
 {
 	rotate(b);
-	ft_printf(RB);
+	ft_printf("rb\n");
 }
 
 //ra + rb at the same time
@@ -39,5 +39,5 @@ void	rr(t_psl *a, t_psl *b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf(RR);
+	ft_printf("rr\n");
 }
