@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 13:17:38 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 12:29:24 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/09 10:25:53 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	rrr(t_psl *a, t_psl *b);
 void	sorting_three(t_psl *a);
 t_stack	*min_num(t_psl *list, int deli);
 t_stack	*max_num(t_psl *list, int deli);
+void	reverse_rotate_both(t_psl *a, t_psl *b);
+void	rotate_both(t_psl *a, t_psl *b);
 
 //move_stack.c
 t_stack	*get_cheapest(t_psl *list);

@@ -6,20 +6,25 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 11:49:14 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 13:10:23 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 12:02:34 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/* 
-void	all_sorted(t_psl *a)
+
+static void	final_rotation(t_psl *a)
 {
 	t_stack	*mini;
 
-	mini = min_num(a, INT_MAX);
-	a->first = mini;
-	a->first->prev = mini->prev;
-} */
+	mini = min_num(a, INT_MIN);
+	while (mini != a->first)
+	{
+		if (mini->above_median == 1)
+			ra(a);
+		else
+			rra(a);
+	}
+}
 
 /* Returns the cheapest node */
 t_stack	*get_cheapest(t_psl *list)
@@ -56,7 +61,6 @@ void	set_target_b(t_psl *a, t_psl *b)
 void	sorting_all(t_psl *a, t_psl *b)
 {
 	int	len;
-	t_stack	*cheap;
 
 	len = stack_len(a);
 	if (len >= 5)
@@ -79,7 +83,5 @@ void	sorting_all(t_psl *a, t_psl *b)
 		stack_b(a, b);
 		move_one_top_b(b, a);
 	}
-	cheap = min_num(a, INT_MIN);
-	a->first = cheap;
-	a->first->prev = cheap->prev;
+	final_rotation(a);
 }

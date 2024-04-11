@@ -6,11 +6,27 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:09:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 11:02:08 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 11:13:11 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	reverse_rotate_both(t_psl *a, t_psl *b)
+{
+	while (a->first->cheapest != 1 && b->first->cheapest != 1)
+		rrr(a, b);
+	set_index(a);
+	set_index(b);
+}
+
+void	rotate_both(t_psl *a, t_psl *b)
+{
+	while (a->first->cheapest != 1 && b->first->cheapest != 1)
+		rr(a, b);
+	set_index(a);
+	set_index(b);
+}
 
 /* Finds the min_num in the stack */
 t_stack	*min_num(t_psl *list, int deli)
@@ -29,7 +45,7 @@ t_stack	*min_num(t_psl *list, int deli)
 			min_node = temp;
 			min = temp->n;
 		}
-		if (min == INT_MIN)
+		if (min == INT_MAX)
 			min_node = min_num(list, INT_MIN);
 		temp = temp->next;
 		if (temp == list->first)

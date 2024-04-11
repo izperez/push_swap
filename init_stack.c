@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:01:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 12:04:58 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 11:35:09 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_psl	*init_stack_b(void)
 		return (NULL);
 	b->first = NULL;
 	b->last = NULL;
+	b->size = 0;
 	return (b);
 }
 
@@ -83,6 +84,7 @@ t_psl	*init_stack_a(t_psl *list, char **av)
 		return (NULL);
 	list->first = NULL;
 	list->last = NULL;
+	list->size = 0;
 	while (av[i] != NULL)
 	{
 		n = ps_atol(av[i]);

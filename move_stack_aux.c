@@ -6,30 +6,14 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 12:14:26 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 12:30:43 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 11:27:17 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse_rotate_both(t_psl *a, t_psl *b)
-{
-	while (a->first->cheapest != 1 && b->first->cheapest != 1)
-		rrr(a, b);
-	set_index(a);
-	set_index(b);
-}
-
-static void	rotate_both(t_psl *a, t_psl *b)
-{
-	while (a->first->cheapest != 1 && b->first->cheapest != 1)
-		rr(a, b);
-	set_index(a);
-	set_index(b);
-}
-
 /* Move other (rb) */
-static	void	move_other_aux(t_psl *list, t_stack *node)
+static void	move_other_aux(t_psl *list, t_stack *node)
 {
 	if (node->above_median == 1)
 	{
@@ -89,6 +73,6 @@ void	move_one_top_b(t_psl *b, t_psl *a)
 	t_stack	*current;
 
 	current = b->first;
-	move_other(a, current->target, 2);
+	move_other(a, current->target, 1);
 	pa(a, b);
 }

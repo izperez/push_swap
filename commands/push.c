@@ -6,33 +6,15 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:42:55 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/08 13:11:11 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 11:58:23 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* push a: Takes the first element from the stack_b
-adds at the top of the stack_a
-If the stack is empty does nothing */
-void	pa(t_psl *a, t_psl *b)
+/* If the stack is empty or if there has sth */
+static void	pa_aux(t_psl *a, t_psl *b, t_stack *temp)
 {
-	t_stack	*temp;
-
-	if (b == NULL || b->first == NULL)
-		return ;
-	if (b->size == 0)
-	{
-		b->first = NULL;
-		b->last = NULL;
-		free(b);
-		b = NULL;
-		return ;
-	}
-	temp = b->first;
-	b->first = b->first->next;
-	b->first->prev = b->last;
-	b->last->next = b->first;
 	if (a->first == NULL)
 	{
 		a->first = temp;
@@ -52,22 +34,39 @@ void	pa(t_psl *a, t_psl *b)
 		a->size++;
 		b->size--;
 	}
-	ft_printf(PA);
 }
 
-/* push b: Takes the first element from the stack_a
-adds at the top of the stack_b
+/* push a: Takes the first element from the stack_b
+adds at the top of the stack_a
 If the stack is empty does nothing */
-void	pb(t_psl *a, t_psl *b)
+void	pa(t_psl *a, t_psl *b)
 {
 	t_stack	*temp;
 
-	if (a == NULL || a->first == NULL)
+	if (b == NULL || b->first == NULL)
 		return ;
-	temp = a->first;
-	a->first = a->first->next;
-	a->first->prev = a->last;
-	a->last->next = a->first;
+	temp = b->first;
+	if (b->size == 0)
+	{
+		b->first = NULL;
+		b->last = NULL;
+		free(b);
+		b = NULL;
+		return ;
+	}
+	else
+	{
+		b->first = b->first->next;
+		b->first->prev = b->last;
+		b->last->next = b->first;
+	}
+	pa_aux(a, b, temp);
+	ft_printf(PA);
+}
+
+/* If the stack is empty or if there has sth */
+static void	pb_aux(t_psl *a, t_psl *b, t_stack *temp)
+{
 	if (b->first == NULL)
 	{
 		b->first = temp;
@@ -87,5 +86,21 @@ void	pb(t_psl *a, t_psl *b)
 		a->size--;
 		b->size++;
 	}
+}
+
+/* push b: Takes the first element from the stack_a
+adds at the top of the stack_b
+If the stack is empty does nothing */
+void	pb(t_psl *a, t_psl *b)
+{
+	t_stack	*temp;
+
+	if (a == NULL || a->first == NULL)
+		return ;
+	temp = a->first;
+	a->first = a->first->next;
+	a->first->prev = a->last;
+	a->last->next = a->first;
+	pb_aux(a, b, temp);
 	ft_printf(PB);
 }
