@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 12:02:20 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/11 12:06:49 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,4 @@ int	main(int ac, char **av)
 	if (stack_len(a) == 3)
 		sorting_three(a);
 	sorting_all(a, b);
-	printf("******STACK A******\n");
-	print_stack(a);
-	printf("******STACK B******\n");
-	print_stack(b);
 }
