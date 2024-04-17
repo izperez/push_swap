@@ -16,11 +16,16 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
 RM = rm -f
 
+NAME_BONUS = checker
+INCLUDE_BONUS = checker_bonus/checker.h
+
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 SRC = push_swap.c errors.c init_stack.c commands/*.c \
-move_stack.c move_stack_aux.c set_stack.c sorting_three.c
+move_stack.c move_stack_aux.c set_stack.c sorting_three.c \
+
+SRC_BONUS = checker_bonus/*.c checker_bonus/commands/*.c
 
 .SILENT:
 all: $(NAME)
@@ -40,3 +45,6 @@ fclean: clean
 		$(RM) $(NAME)
 
 re: fclean all $(LIBFT)
+
+bonus: $(LIBFT) $(SRC_BONUS) $(INCLUDE_BONUS)
+		$(CC) $(CFLAGS) $(SRC_BONUS) $(LIBFT) -o $(NAME_BONUS)
