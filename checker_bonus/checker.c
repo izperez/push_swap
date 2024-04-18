@@ -6,29 +6,11 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:17:02 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/18 12:11:11 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/18 12:20:10 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-/* Function that free the stack */
-static void	free_stack(t_psl *stack)
-{
-	t_stack	*current;
-
-	if (stack == NULL || stack->first == NULL)
-		return ;
-	current = stack->first;
-	while (1)
-	{
-		current = current->next;
-		free(current);
-		if (current == stack->first)
-			return ;
-	}
-	current = NULL;
-}
 
 /* Print error msg + free_stack() */
 static void	error_free(t_psl *a, t_psl *b)
@@ -36,7 +18,6 @@ static void	error_free(t_psl *a, t_psl *b)
 	ft_printf("Error\n");
 	free_stack(a);
 	free (b);
-	// free_stack(b);
 	exit(1);
 }
 
@@ -88,6 +69,14 @@ static int	stack_sorted(t_psl *stack)
 	return (1);
 }
 
+void	push_swap(int ac, char **av)
+{
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return ;
+	else if (ac == 2)
+		av = ft_split(av[1], ' ');
+}
+
 int	main(int ac, char **av)
 {
 	t_psl	*a;
@@ -97,10 +86,7 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
-	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (0);
-	else if (ac == 2)
-		av = ft_split(av[1], ' ');
+	push_swap(ac, av);
 	a = init_stack_a(a, av);
 	len = stack_len(a);
 	line = get_next_line(STDIN_FILENO);
@@ -111,15 +97,11 @@ int	main(int ac, char **av)
 		line = get_next_line(STDIN_FILENO);
 	}
 	if (b->size == 0)
-	{
 		free(b);
-	}
-	if (stack_sorted(a) == 1)
+	if (stack_sorted(a) == 1 && b->size == 0)
 		ft_printf("OK\n");
 	else
-	{
 		ft_printf("KO\n");
-	}
 	free_stack(a);
 	exit(1);
 }

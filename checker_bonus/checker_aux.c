@@ -6,11 +6,29 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:53:39 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/18 12:10:03 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/18 12:19:02 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+/* Function that free the stack */
+void	free_stack(t_psl *stack)
+{
+	t_stack	*current;
+
+	if (stack == NULL || stack->first == NULL)
+		return ;
+	current = stack->first;
+	while (1)
+	{
+		current = current->next;
+		free(current);
+		if (current == stack->first)
+			return ;
+	}
+	current = NULL;
+}
 
 /* Function that initializes the stack */
 t_psl	*init_stack_b(void)
