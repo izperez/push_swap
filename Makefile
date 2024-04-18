@@ -25,7 +25,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 SRC = push_swap.c errors.c init_stack.c commands/*.c \
 move_stack.c move_stack_aux.c set_stack.c sorting_three.c \
 
-SRC_BONUS = checker_bonus/*.c checker_bonus/commands/*.c
+SRC_BONUS = checker_bonus/*.c commands/*.c
 
 .SILENT:
 all: $(NAME)

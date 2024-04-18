@@ -6,27 +6,11 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:17:02 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/17 10:37:57 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/18 12:11:11 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void	print_stack(t_psl *list)
-{
-	t_stack	*current;
-
-	if (list == NULL || list->first == NULL)
-		return ;
-	current = list->first;
-	while (current != NULL)
-	{
-		printf("%i\n", current->n);
-		if (current->next == list->first)
-			break ;
-		current = current->next;
-	}
-}
 
 /* Function that free the stack */
 static void	free_stack(t_psl *stack)
@@ -95,7 +79,7 @@ static int	stack_sorted(t_psl *stack)
 	current = stack->first;
 	while (1)
 	{
-		if (current->n > current->next->n)
+		if (current->n > current->next->n && current->next != stack->first)
 			return (0);
 		current = current->next;
 		if (current == stack->first)
@@ -123,10 +107,6 @@ int	main(int ac, char **av)
 	b = init_stack_b();
 	while (line)
 	{
-		printf("****STACK A****\n");
-		print_stack(a);
-		printf("****STACK B****\n");
-		print_stack(b);
 		all_checked(a, b, line, len);
 		line = get_next_line(STDIN_FILENO);
 	}
@@ -139,7 +119,6 @@ int	main(int ac, char **av)
 	else
 	{
 		ft_printf("KO\n");
-		print_stack(a);
 	}
 	free_stack(a);
 	exit(1);

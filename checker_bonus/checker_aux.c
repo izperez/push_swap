@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:53:39 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/17 10:39:10 by izperez          ###   ########.fr       */
+/*   Updated: 2024/04/18 12:10:03 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,5 @@ t_psl	*init_stack_a(t_psl *list, char **av)
 		list->last->n = n;
 		i++;
 	}
-	// exit(0);
 	return (list);
 }
