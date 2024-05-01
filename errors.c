@@ -6,33 +6,44 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:06:09 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/09 11:00:05 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 11:53:33 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	check_duplicated(char **av, int len)
+/* Function that free the stack */
+void	free_stack(t_psl *stack)
 {
-	int		i;
-	int		j;
-	long	num;
+	t_stack	*current;
+
+	if (stack == NULL || stack->first == NULL)
+		return ;
+	current = stack->first;
+	while (1)
+	{
+		current = current->next;
+		free(current);
+		if (current == stack->first)
+			return ;
+	}
+	current = NULL;
+}
+
+static void	check_duplicated(char **av)
+{
+	int	i;
+	int	j;
 
 	i = 0;
-	while (i < len)
+	while (av[i] != NULL)
 	{
-		num = ps_atol(av[i]);
-		if (num > INT_MAX || num < INT_MIN)
-		{
-			ft_printf("Error, number out of range\n");
-			exit (0);
-		}
 		j = i + 1;
-		while (j < len)
+		while (av[j] != NULL)
 		{
-			if (num == ps_atol(av[j]))
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
 			{
-				ft_printf("Error, duplicated number\n");
+				ft_putstr_fd("Error, duplicated\n", 2);
 				exit (0);
 			}
 			j++;
@@ -43,15 +54,29 @@ static void	check_duplicated(char **av, int len)
 
 static void	error_syntax_aux(char **av, int i, int j)
 {
-	while (av[i][j] == ' ')
-		j++;
-	if (av[i][j] == '\0' || av[i][j] == '+')
-		i++;
-	if (av[i][0] == '\0' ||
-	(av[i][0] == '-' && av[i][j] != ' ' && av[i][1] == '\0') || av[i][0] == '+')
+	if (av[i][j] == '-' || av[i][j] == '+')
 	{
-		ft_printf("Error, Invalid number\n");
-		return ;
+		j++;
+		if (av[i][j] == '\0')
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(0);
+		}
+	}
+	while (av[i][j] != '\0')
+	{
+		if (!ft_isdigit(av[i][j]) && av[i][j] != '\0')
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(0);
+		}
+		j++;
+	}
+	if ((ps_atol(av[i]) > INT_MAX) || (ps_atol(av[i]) < INT_MIN)
+		|| av[i][0] == '\0')
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(0);
 	}
 }
 
@@ -65,18 +90,8 @@ int	error_syntax(char **av)
 	{
 		j = 0;
 		error_syntax_aux(av, i, j);
-		while (av[i][j] != '\0')
-		{
-			if (!ft_isdigit(av[i][j]) && !(av[i][j] == '-' && j == 0)
-			&& !(av[i][j] == '+'))
-			{
-				printf("Error, pepito\n");
-				return (0);
-			}
-			j++;
-		}
 		i++;
 	}
-	check_duplicated(av, i);
+	check_duplicated(av);
 	return (1);
 }

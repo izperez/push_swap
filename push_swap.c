@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:14:43 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 12:06:49 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 11:49:25 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,62 @@ int	stack_len(t_psl *stack)
 	return (i);
 }
 
-void	print_stack(t_psl *list)
+/* Checks if the stack is sorted */
+static int	stack_sorted(t_psl *stack)
 {
 	t_stack	*current;
 
-	if (list == NULL || list->first == NULL)
-		return ;
-	current = list->first;
-	while (current != NULL)
+	if (stack == NULL || stack->first == NULL)
+		return (0);
+	current = stack->first;
+	while (1)
 	{
-		printf("%i\n", current->n);
-		if (current->next == list->first)
-			break ;
+		if (current->n > current->next->n && current->next != stack->first)
+			return (0);
 		current = current->next;
+		if (current == stack->first)
+			break ;
 	}
+	return (1);
+}
+
+/* Set the index */
+void	set_index(t_psl *list)
+{
+	t_stack	*current;
+	int		i;
+	int		mid;
+
+	if (list->first == NULL)
+		return ;
+	mid = (stack_len(list) / 2);
+	current = list->first;
+	i = 0;
+	while (1)
+	{
+		current->i = i;
+		if (i <= mid + 1)
+			current->above_median = 1;
+		else
+			current->above_median = 0;
+		current = current->next;
+		i++;
+		if (current == list->first)
+			break ;
+	}
+}
+
+void	free_array(char **result)
+{
+	int	j;
+
+	j = 0;
+	while (result[j])
+	{
+		free (result[j]);
+		j++;
+	}
+	free (result);
 }
 
 int	main(int ac, char **av)
@@ -62,7 +104,11 @@ int	main(int ac, char **av)
 	else
 		return (0);
 	b = init_stack_b();
-	if (stack_len(a) == 3)
-		sorting_three(a);
+	if (stack_sorted(a) == 1)
+		exit (0);
 	sorting_all(a, b);
+	if (ac == 2)
+		free_array(arg);
+	free_stack(a);
+	free(a);
 }

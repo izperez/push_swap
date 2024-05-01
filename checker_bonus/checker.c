@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:17:02 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/18 12:20:10 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 12:00:45 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static int	stack_sorted(t_psl *stack)
 	return (1);
 }
 
-void	push_swap(int ac, char **av)
+void	print_message(t_psl *a, t_psl *b)
 {
-	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return ;
-	else if (ac == 2)
-		av = ft_split(av[1], ' ');
+	if (stack_sorted(a) == 1 && b->size == 0)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }
 
 int	main(int ac, char **av)
@@ -94,14 +94,13 @@ int	main(int ac, char **av)
 	while (line)
 	{
 		all_checked(a, b, line, len);
+		free (line);
 		line = get_next_line(STDIN_FILENO);
 	}
 	if (b->size == 0)
 		free(b);
-	if (stack_sorted(a) == 1 && b->size == 0)
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
+	print_message(a, b);
 	free_stack(a);
+	free (a);
 	exit(1);
 }

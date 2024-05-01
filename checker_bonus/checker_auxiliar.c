@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_b.c                                     :+:      :+:    :+:   */
+/*   checker_auxiliar.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 09:55:39 by izperez           #+#    #+#             */
-/*   Updated: 2024/03/26 15:11:23 by izperez          ###   ########.fr       */
+/*   Created: 2024/05/01 11:58:14 by izperez           #+#    #+#             */
+/*   Updated: 2024/05/01 11:59:16 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-t_psl	*init_stack_b(t_psl *a)
+void	push_swap(int ac, char **av)
 {
-	t_psl	*b;
-	if (a->first == NULL)
-		return (NULL);
-	b = (t_psl *)malloc(sizeof(t_psl));
-	if (b == NULL)
-		return (NULL);
-	b->first = NULL;
-	if (a->first->next != NULL)
-	{
-		pb(a, b);
-		pb(a, b);
-	}
-	return (b);
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return ;
+	else if (ac == 2)
+		av = ft_split(av[1], ' ');
 }

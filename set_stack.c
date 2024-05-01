@@ -6,37 +6,11 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:08:10 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 11:27:34 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 12:20:55 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* Set the index */
-void	set_index(t_psl *list)
-{
-	t_stack	*current;
-	int		i;
-	int		mid;
-
-	if (list->first == NULL)
-		return ;
-	mid = stack_len(list) / 2;
-	current = list->first;
-	i = 0;
-	while (1)
-	{
-		current->i = i;
-		if (i < mid)
-			current->above_median = 1;
-		else
-			current->above_median = 0;
-		current = current->next;
-		i++;
-		if (current == list->first)
-			break ;
-	}
-}
 
 /* Set the target for each value */
 void	set_target_a(t_psl *a, t_psl *b)
@@ -54,11 +28,8 @@ void	set_target_a(t_psl *a, t_psl *b)
 }
 
 //set price (b)
-static void	set_price_aux(t_psl *a, t_psl *b)
+static void	set_price_aux(t_psl *a, t_psl *b, t_stack *current)
 {
-	t_stack	*current;
-
-	current = a->first;
 	if (current->above_median == 1)
 		current->price = current->i;
 	else
@@ -77,10 +48,7 @@ void	set_price(t_psl *a, t_psl *b)
 	current = a->first;
 	while (1)
 	{
-		if (((current->above_median == 1 && current->target->above_median == 1) \
-		&& (current->i == current->target->i)) || \
-		((current->above_median == 0 && current->target->above_median == 0) && \
-		((stack_len(b) - current->target->i) == (stack_len(a) - current->i))))
+		if (current->i == current->target->i)
 		{
 			if (current->above_median == 1)
 				current->price = current->i;
@@ -89,11 +57,13 @@ void	set_price(t_psl *a, t_psl *b)
 		}
 		else
 		{
-			set_price_aux(a, b);
+			set_price_aux(a, b, current);
 		}
 		current = current->next;
 		if (current == a->first)
+		{
 			break ;
+		}
 	}
 }
 
@@ -108,7 +78,11 @@ void	set_cheapest(t_psl *list)
 	while (1)
 	{
 		if (current->price < min)
-			current->cheapest = 1;
+		{
+			list->cheapest = current;
+			min = current->price;
+		}
+		current = current->next;
 		if (current == list->first)
 			break ;
 	}

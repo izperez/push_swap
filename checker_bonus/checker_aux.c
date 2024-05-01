@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:53:39 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/18 12:19:02 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 11:43:57 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ t_psl	*append_node(t_psl *list, int i)
 	new_node->n = 0;
 	new_node->i = i;
 	new_node->above_median = 0;
-	new_node->cheapest = 0;
 	new_node->next = NULL;
 	new_node->prev = list->last;
 	new_node->target = NULL;

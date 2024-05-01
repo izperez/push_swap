@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 11:49:14 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 12:02:34 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 11:26:32 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,6 @@ static void	final_rotation(t_psl *a)
 		else
 			rra(a);
 	}
-}
-
-/* Returns the cheapest node */
-t_stack	*get_cheapest(t_psl *list)
-{
-	t_stack	*current;
-
-	current = list->first;
-	while (1)
-	{
-		if (current->cheapest == 1)
-			return (current);
-		current = current->next;
-		if (current == list->first)
-			break ;
-	}
-	return (current);
 }
 
 void	set_target_b(t_psl *a, t_psl *b)

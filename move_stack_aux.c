@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 12:14:26 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 11:27:17 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 11:15:20 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ static void	move_other(t_psl *list, t_stack *node, int mode)
 void	move_one_top_a(t_psl *a, t_psl *b)
 {
 	t_stack	*current;
-	t_stack	*cheapest;
 
 	current = a->first;
 	if (current->above_median == 1 && current->target->above_median == 1)
+	{
 		rotate_both(a, b);
+	}
 	if (current->above_median == 0 && current->target->above_median == 0)
 		reverse_rotate_both(a, b);
-	cheapest = get_cheapest(a);
-	move_other(a, cheapest, 1);
-	move_other(b, cheapest->target, 2);
+	move_other(a, a->cheapest, 1);
+	move_other(b, a->cheapest->target, 2);
 	pb(a, b);
 }
 

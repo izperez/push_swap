@@ -6,7 +6,7 @@
 /*   By: izperez <izperez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:09:50 by izperez           #+#    #+#             */
-/*   Updated: 2024/04/11 11:13:11 by izperez          ###   ########.fr       */
+/*   Updated: 2024/05/01 11:15:04 by izperez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	reverse_rotate_both(t_psl *a, t_psl *b)
 {
-	while (a->first->cheapest != 1 && b->first->cheapest != 1)
+	while (a->cheapest->n != 1 && b->cheapest->n != 1)
 		rrr(a, b);
 	set_index(a);
 	set_index(b);
@@ -22,8 +22,10 @@ void	reverse_rotate_both(t_psl *a, t_psl *b)
 
 void	rotate_both(t_psl *a, t_psl *b)
 {
-	while (a->first->cheapest != 1 && b->first->cheapest != 1)
+	if (a->cheapest->target != b->first || a->cheapest != a->first)
+	{
 		rr(a, b);
+	}
 	set_index(a);
 	set_index(b);
 }
